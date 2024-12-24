@@ -5,7 +5,6 @@ import (
 	"github.com/gin-gonic/gin"
 )
 
-// SetupRoutes configures the API routes
 func SetupRoutes(router *gin.Engine) {
 	api := router.Group("/api")
 	{

@@ -39,7 +39,6 @@ func main() {
 	// Swagger endpoint
 	router.GET("/swagger/*any", ginSwagger.WrapHandler(swaggerFiles.Handler))
 
-	// Run the server on port 8080
 	if err := router.Run(":8080"); err != nil {
 		panic("Failed to run server: " + err.Error())
 	}

@@ -4,7 +4,6 @@ import (
 	"time"
 )
 
-// Book represents the book model in the database
 // swagger:model
 type Book struct {
 	// ID is the primary key
