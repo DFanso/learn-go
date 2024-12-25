@@ -1,9 +1,13 @@
 package main
 
 import (
+	"fmt"
+
+	"github.com/dfanso/learn-go/config"
 	"github.com/dfanso/learn-go/database"
 	"github.com/dfanso/learn-go/routes"
 	"github.com/gin-gonic/gin"
+	"github.com/joho/godotenv"
 
 	// Swagger files
 	_ "github.com/dfanso/learn-go/docs"
@@ -28,6 +32,10 @@ import (
 
 func main() {
 
+	godotenv.Load()
+	port := config.GoDotEnvVariable("GIN_PORT")
+	fmt.Println("Port: ", port)
+
 	// Initialize the database
 	database.Connect()
 
@@ -40,7 +48,7 @@ func main() {
 	// Swagger endpoint (http://localhost:8080/swagger/index.html)
 	router.GET("/swagger/*any", ginSwagger.WrapHandler(swaggerFiles.Handler))
 
-	if err := router.Run(":8080"); err != nil {
+	if err := router.Run(fmt.Sprintf(":%s", port)); err != nil {
 		panic("Failed to run server: " + err.Error())
 	}
 }
