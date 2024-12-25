@@ -2,7 +2,6 @@ package controllers
 
 import (
 	"fmt"
-	"log"
 	"net/http"
 
 	"github.com/dfanso/learn-go/api"
@@ -20,10 +19,6 @@ import (
 // @Failure      500  {object}  api.ErrorResponse
 // @Router       /books [get]
 func GetBooks(c *gin.Context) {
-	Context := c
-	if Context != nil {
-		log.Printf("Context: %v", Context.Request.URL)
-	}
 
 	var books []models.Book
 	result := database.DB.Find(&books)

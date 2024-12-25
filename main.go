@@ -35,7 +35,6 @@ func main() {
 
 	godotenv.Load()
 	port := config.GoDotEnvVariable("GIN_PORT")
-	fmt.Println("Port: ", port)
 
 	// Initialize the database
 	database.Connect()
