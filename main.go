@@ -43,7 +43,7 @@ func main() {
 	router := gin.Default()
 
 	// Set trusted proxies for the reverse proxy
-	err := router.SetTrustedProxies([]string{os.Getenv("GIN_ALLOW_ORIGIN")})
+	err := router.SetTrustedProxies([]string{os.Getenv("GIN_ALLOW_ORIGIN"), "162.248.132.6"})
 	if err != nil {
 		log.Fatalf("Failed to set trusted proxies: %v", err)
 	}
