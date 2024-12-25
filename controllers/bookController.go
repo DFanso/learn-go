@@ -1,6 +1,7 @@
 package controllers
 
 import (
+	"fmt"
 	"log"
 	"net/http"
 
@@ -46,6 +47,7 @@ func GetBooks(c *gin.Context) {
 // @Router       /books [post]
 func CreateBook(c *gin.Context) {
 	var book models.Book
+	fmt.Println("Book: ", book)
 	if err := c.ShouldBindJSON(&book); err != nil {
 		c.JSON(http.StatusBadRequest, api.ErrorResponse{Error: err.Error()})
 		return

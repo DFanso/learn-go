@@ -9,22 +9,22 @@ type Book struct {
 	// ID is the primary key
 	// required: true
 	// swaggerignore:true
-	ID uint `json:"id" gorm:"primaryKey"`
+	ID uint `json:"-"`
 
+	// swaggerignore:true
 	// CreatedAt records the creation time
 	// required: true
-	// swaggerignore:true
-	CreatedAt time.Time `json:"created_at"`
+	CreatedAt time.Time `json:"-"`
 
 	// UpdatedAt records the last update time
 	// required: true
 	// swaggerignore:true
-	UpdatedAt time.Time `json:"updated_at"`
+	UpdatedAt time.Time `json:"-"`
 
 	// DeletedAt is used for soft deletes
 	// nullable: true
 	// swaggerignore:true
-	DeletedAt *time.Time `json:"deleted_at" gorm:"index"`
+	DeletedAt *time.Time `json:"-"`
 
 	// Title of the book
 	// required: true

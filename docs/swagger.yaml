@@ -28,24 +28,6 @@ definitions:
       available:
         description: Availability status of the book
         type: boolean
-      created_at:
-        description: |-
-          CreatedAt records the creation time
-          required: true
-          swaggerignore:true
-        type: string
-      deleted_at:
-        description: |-
-          DeletedAt is used for soft deletes
-          nullable: true
-          swaggerignore:true
-        type: string
-      id:
-        description: |-
-          ID is the primary key
-          required: true
-          swaggerignore:true
-        type: integer
       quantity:
         description: |-
           Quantity of the book available
@@ -55,12 +37,6 @@ definitions:
         description: |-
           Title of the book
           required: true
-        type: string
-      updated_at:
-        description: |-
-          UpdatedAt records the last update time
-          required: true
-          swaggerignore:true
         type: string
     required:
     - author

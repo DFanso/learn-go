@@ -266,28 +266,12 @@
                     "description": "Availability status of the book",
                     "type": "boolean"
                 },
-                "created_at": {
-                    "description": "CreatedAt records the creation time\nrequired: true\nswaggerignore:true",
-                    "type": "string"
-                },
-                "deleted_at": {
-                    "description": "DeletedAt is used for soft deletes\nnullable: true\nswaggerignore:true",
-                    "type": "string"
-                },
-                "id": {
-                    "description": "ID is the primary key\nrequired: true\nswaggerignore:true",
-                    "type": "integer"
-                },
                 "quantity": {
                     "description": "Quantity of the book available\nrequired: true",
                     "type": "integer"
                 },
                 "title": {
                     "description": "Title of the book\nrequired: true",
-                    "type": "string"
-                },
-                "updated_at": {
-                    "description": "UpdatedAt records the last update time\nrequired: true\nswaggerignore:true",
                     "type": "string"
                 }
             }
