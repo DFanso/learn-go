@@ -2,6 +2,7 @@ package main
 
 import (
 	"fmt"
+	"log"
 
 	"github.com/dfanso/learn-go/config"
 	"github.com/dfanso/learn-go/database"
@@ -41,6 +42,12 @@ func main() {
 
 	// Create a Gin router with default middleware (logger and recovery)
 	router := gin.Default()
+
+	// Set trusted proxies for the reverse proxy
+	err := router.SetTrustedProxies([]string{config.GoDotEnvVariable("GIN_ALLOW_ORIGIN")})
+	if err != nil {
+		log.Fatalf("Failed to set trusted proxies: %v", err)
+	}
 
 	// Setup API routes
 	routes.SetupRoutes(router)
