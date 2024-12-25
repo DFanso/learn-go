@@ -3,8 +3,8 @@ package main
 import (
 	"fmt"
 	"log"
+	"os"
 
-	"github.com/dfanso/learn-go/config"
 	"github.com/dfanso/learn-go/database"
 	"github.com/dfanso/learn-go/routes"
 	"github.com/gin-gonic/gin"
@@ -34,7 +34,7 @@ import (
 func main() {
 
 	godotenv.Load()
-	port := config.GoDotEnvVariable("GIN_PORT")
+	port := os.Getenv("GIN_PORT")
 
 	// Initialize the database
 	database.Connect()
@@ -43,7 +43,7 @@ func main() {
 	router := gin.Default()
 
 	// Set trusted proxies for the reverse proxy
-	err := router.SetTrustedProxies([]string{config.GoDotEnvVariable("GIN_ALLOW_ORIGIN")})
+	err := router.SetTrustedProxies([]string{os.Getenv("GIN_ALLOW_ORIGIN")})
 	if err != nil {
 		log.Fatalf("Failed to set trusted proxies: %v", err)
 	}
