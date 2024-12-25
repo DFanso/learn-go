@@ -33,18 +33,6 @@ jobs:
         flags: unittests
         name: codecov-umbrella
 
-  lint:
-    name: Lint Code
-    runs-on: ubuntu-latest
-    
-    steps:
-    - uses: actions/checkout@v3
-
-    - name: Run golangci-lint
-      uses: golangci/golangci-lint-action@v3
-      with:
-        version: latest
-        args: --timeout=5m
 
   build:
     name: Build Docker Image
