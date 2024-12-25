@@ -58,4 +58,11 @@ jobs:
     - name: Test image
       run: |
         docker images
-        docker run --rm learn-go:latest --version
+        # Test if container starts successfully
+        docker run --rm -d -p 8080:8080 --name test-container myapp:latest
+        # Wait for container to start
+        sleep 5
+        # Check if container is running
+        docker ps | grep test-container
+        # Stop container
+        docker stop test-container
