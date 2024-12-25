@@ -27,6 +27,7 @@ import (
 // @BasePath  /api
 
 func main() {
+
 	// Initialize the database
 	database.Connect()
 
@@ -36,7 +37,7 @@ func main() {
 	// Setup API routes
 	routes.SetupRoutes(router)
 
-	// Swagger endpoint
+	// Swagger endpoint (http://localhost:8080/swagger/index.html)
 	router.GET("/swagger/*any", ginSwagger.WrapHandler(swaggerFiles.Handler))
 
 	if err := router.Run(":8080"); err != nil {
