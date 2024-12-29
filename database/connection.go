@@ -14,13 +14,13 @@ var DB *gorm.DB
 func Connect() {
 	var err error
 
-	DB, err = gorm.Open(sqlite.Open("books.db"), &gorm.Config{})
+	DB, err = gorm.Open(sqlite.Open("application.db"), &gorm.Config{})
 	if err != nil {
 		log.Fatal("Failed to connect to database:", err)
 	}
 
-	// Migrate the schema
-	err = DB.AutoMigrate(&models.Book{})
+	// Migrate both Book and User schemas
+	err = DB.AutoMigrate(&models.Book{}, &models.User{})
 	if err != nil {
 		log.Fatal("Failed to migrate database:", err)
 	}

@@ -43,6 +43,40 @@ definitions:
     - quantity
     - title
     type: object
+  models.User:
+    properties:
+      email:
+        description: |-
+          Email of the user
+          required: true
+        type: string
+      firstName:
+        description: |-
+          First Name
+          required: true
+        type: string
+      lastName:
+        description: |-
+          Last Name
+          required: true
+        type: string
+      password:
+        description: |-
+          password of the user
+          required: true
+        type: string
+      userName:
+        description: |-
+          User Name
+          required: true
+        type: string
+    required:
+    - email
+    - firstName
+    - lastName
+    - password
+    - userName
+    type: object
 host: localhost:8080
 info:
   contact:
@@ -196,4 +230,143 @@ paths:
       summary: Update a book
       tags:
       - books
+  /users:
+    get:
+      description: Get a list of all Users
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            items:
+              $ref: '#/definitions/models.User'
+            type: array
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/api.ErrorResponse'
+      summary: Retrieve all Users
+      tags:
+      - users
+    post:
+      consumes:
+      - application/json
+      description: Add a new user to the database
+      parameters:
+      - description: User to create
+        in: body
+        name: user
+        required: true
+        schema:
+          $ref: '#/definitions/models.User'
+      produces:
+      - application/json
+      responses:
+        "201":
+          description: Created
+          schema:
+            $ref: '#/definitions/models.User'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/api.ErrorResponse'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/api.ErrorResponse'
+      summary: Create a new User
+      tags:
+      - users
+  /users/{id}:
+    delete:
+      description: Remove a user from the database by ID
+      parameters:
+      - description: User ID
+        in: path
+        name: id
+        required: true
+        type: integer
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/api.MessageResponse'
+        "404":
+          description: Not Found
+          schema:
+            $ref: '#/definitions/api.ErrorResponse'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/api.ErrorResponse'
+      summary: Delete a user
+      tags:
+      - users
+    get:
+      description: Get details of a user by ID
+      parameters:
+      - description: User ID
+        in: path
+        name: id
+        required: true
+        type: integer
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/models.User'
+        "404":
+          description: Not Found
+          schema:
+            $ref: '#/definitions/api.ErrorResponse'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/api.ErrorResponse'
+      summary: Retrieve a single user
+      tags:
+      - users
+    put:
+      consumes:
+      - application/json
+      description: Update details of a user by ID
+      parameters:
+      - description: User ID
+        in: path
+        name: id
+        required: true
+        type: integer
+      - description: Updated user information
+        in: body
+        name: user
+        required: true
+        schema:
+          $ref: '#/definitions/models.User'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/models.User'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/api.ErrorResponse'
+        "404":
+          description: Not Found
+          schema:
+            $ref: '#/definitions/api.ErrorResponse'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/api.ErrorResponse'
+      summary: Update a user
+      tags:
+      - users
 swagger: "2.0"

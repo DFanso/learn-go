@@ -16,5 +16,15 @@ func SetupRoutes(router *gin.Engine) {
 			books.PUT("/:id", controllers.UpdateBook)    // PUT /api/books/:id
 			books.DELETE("/:id", controllers.DeleteBook) // DELETE /api/books/:id
 		}
+
+		users := api.Group("/users")
+		{
+			users.GET("/", controllers.GetUsers)         // GET /api/users/
+			users.POST("/", controllers.CreateUser)      // POST /api/users/
+			users.GET("/:id", controllers.GetUser)       // GET /api/users/:id
+			users.PUT("/:id", controllers.UpdateUser)    // PUT /api/users/:id
+			users.DELETE("/:id", controllers.DeleteUser) // DELETE /api/users/:id
+
+		}
 	}
 }
