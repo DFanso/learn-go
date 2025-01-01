@@ -13,5 +13,5 @@ type ErrorResponse struct {
 type MessageResponse struct {
 	// Success message
 	// required: true
-	Message string `json:"message" example:"Book deleted successfully"`
+	Message string `json:"message" example:"Success!"`
 }
